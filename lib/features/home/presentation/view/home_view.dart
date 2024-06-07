@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:student_management_starter/features/batch/presentation/view/batch_view.dart';
+
+final currentIndexProvider = StateProvider<int>((ref) => 0);
 
 class HomeView extends ConsumerWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(currentIndexProvider);
+
+    final views = [
+      const Center(child: Text('Dashboard')), // Replace with DashboardView
+      const Center(child: Text('Course')), // Replace with CourseView
+      BatchView(),
+      const Center(child: Text('Profile')), // Replace with ProfileView
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard View'),
@@ -24,9 +36,7 @@ class HomeView extends ConsumerWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Dashboard'),
-      ),
+      body: views[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -46,9 +56,9 @@ class HomeView extends ConsumerWidget {
             label: 'Profile',
           ),
         ],
-        currentIndex: 0, // This should be managed with state to update on tap
+        currentIndex: currentIndex,
         onTap: (index) {
-          // Handle navigation logic here
+          ref.read(currentIndexProvider.notifier).state = index;
         },
       ),
     );

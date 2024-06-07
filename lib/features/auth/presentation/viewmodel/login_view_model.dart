@@ -17,4 +17,7 @@ class LoginViewModel extends StateNotifier<void> {
   void openHomeView() {
     navigator.openHomeView();
   }
+  void openBatchView(){
+    navigator.openBatchView();
+  }
 }

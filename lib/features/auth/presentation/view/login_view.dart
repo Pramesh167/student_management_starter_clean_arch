@@ -84,9 +84,12 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          // ref
+                          //     .read(loginViewModelProvider.notifier)
+                          //     .openHomeView();
                           ref
                               .read(loginViewModelProvider.notifier)
-                              .openHomeView();
+                              .openBatchView();
                         }
                       },
                       child: const SizedBox(

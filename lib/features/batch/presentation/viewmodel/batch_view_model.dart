@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:student_management_starter/core/common/my_snackbar.dart';
@@ -6,15 +5,15 @@ import 'package:student_management_starter/features/batch/domain/entity/batch_en
 import 'package:student_management_starter/features/batch/domain/usecases/batch_usecase.dart';
 import 'package:student_management_starter/features/batch/presentation/state/batch_state.dart';
 
-
-final batchViewModelProvider=StateNotifierProvider<BatchViewModel,BatchState>((ref){
+final batchViewModelProvider =
+    StateNotifierProvider<BatchViewModel, BatchState>((ref) {
   return BatchViewModel(ref.read(batchUseCaseProvider));
 });
 
-
-
 class BatchViewModel extends StateNotifier<BatchState> {
-  BatchViewModel(this.batchUseCase) : super(BatchState.initial());
+  BatchViewModel(this.batchUseCase) : super(BatchState.initial()) {
+    getAllBatches();
+  }
 
   final BatchUsecase batchUseCase;
 
@@ -30,6 +29,7 @@ class BatchViewModel extends StateNotifier<BatchState> {
       state = state.copyWith(isLoading: false, error: null);
       showMySnackBar(message: "batch added sucessfully");
     });
+    getAllBatches();
   }
 
   //for getting all batches

@@ -1,7 +1,7 @@
 //when  we navigate we alwasy navigate thru viewmodel
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/app/navigator/splash_navigator.dart';
+import 'package:student_management_starter/features/splash/presentation/navigator/splash_navigator.dart';
 
 
 final splashViewModelProvider=StateNotifierProvider<SplashViewModel,void>((ref){

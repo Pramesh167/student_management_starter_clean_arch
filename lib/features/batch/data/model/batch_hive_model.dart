@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_management_starter/app/constants/hive_table_constant.dart';
-import 'package:student_management_starter/features/batch/presentation/viewmodel/batch_view_model.dart';
+import 'package:student_management_starter/features/batch/domain/entity/batch_entity.dart';
 import 'package:uuid/uuid.dart';
 
 part 'batch_hive_model.g.dart';

@@ -1,27 +1,27 @@
 import 'package:student_management_starter/features/batch/domain/entity/batch_entity.dart';
 
 class BatchState {
-  final List<BatchEntity> lstBatches;
+  final List<CourseEntity> lstCourse;
   final bool isLoading;
   final String? error;
 
   BatchState({
-    required this.lstBatches,
+    required this.lstCourse,
     required this.isLoading,
     this.error,
   });
 
   factory BatchState.initial() {
-    return BatchState(lstBatches: [], isLoading: false, error: null);
+    return BatchState(lstCourse: [], isLoading: false, error: null);
   }
 
   BatchState copyWith({
-    List<BatchEntity>? lstBatches,
+    List<CourseEntity>? lstBatches,
     bool? isLoading,
     String? error,
   }) {
     return BatchState(
-      lstBatches: lstBatches ?? this.lstBatches,
+      lstCourse: lstBatches ?? lstCourse,
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
     );

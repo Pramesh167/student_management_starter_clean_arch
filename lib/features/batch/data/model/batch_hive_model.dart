@@ -27,18 +27,18 @@ class BatchHiveModel {
         batchName = '';
 
   // Convert Hive Object to Entity
-  BatchEntity toEntity() => BatchEntity(
-        batchId: batchId,
-        batchName: batchName,
+  CourseEntity toEntity() => CourseEntity(
+        courseId: batchId,
+        courseName: batchName,
       );
 
   // Convert Entity to Hive Object
-  BatchHiveModel fromEntity(BatchEntity entity) => BatchHiveModel(
-        batchId: entity.batchId,
-        batchName: entity.batchName,
+  BatchHiveModel fromEntity(CourseEntity entity) => BatchHiveModel(
+        batchId: entity.courseId,
+        batchName: entity.courseName,
       );
 
   // Convert Hive List to Entity List
-  List<BatchEntity> toEntityList(List<BatchHiveModel> models) =>
+  List<CourseEntity> toEntityList(List<BatchHiveModel> models) =>
       models.map((model) => model.toEntity()).toList();
 }

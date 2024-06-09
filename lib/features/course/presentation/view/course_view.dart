@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_management_starter/features/batch/domain/entity/batch_entity.dart';
-import 'package:student_management_starter/features/batch/presentation/viewmodel/batch_view_model.dart';
+import 'package:student_management_starter/features/course/domain/entity/course_entity.dart';
+import 'package:student_management_starter/features/course/presentation/viewmodel/course_view_model.dart';
 
-class BatchView extends ConsumerStatefulWidget {
-  const BatchView({super.key});
+class CourseView extends ConsumerStatefulWidget {
+  const CourseView({super.key});
 
   @override
-  ConsumerState<BatchView> createState() => _AddBatchViewState();
+  ConsumerState<CourseView> createState() => _AddCourseViewState();
 }
 
-class _AddBatchViewState extends ConsumerState<BatchView> {
-  final batchController = TextEditingController();
+class _AddCourseViewState extends ConsumerState<CourseView> {
+  final courseController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var batchState = ref.watch(courseViewModelProvider);
+    var courseState = ref.watch(courseViewModelProvider);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -23,7 +23,7 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
           children: [
             const SizedBox(height: 50),
             const Text(
-              'Add Batch',
+              'Add Course',
               style: TextStyle(
                 fontSize: 30,
                 fontFamily: 'Brand Bold',
@@ -31,10 +31,10 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
             ),
             const SizedBox(height: 10),
             TextField(
-              controller: batchController,
+              controller: courseController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Batch Name',
+                labelText: 'Course Name',
               ),
             ),
             const SizedBox(height: 8),
@@ -43,29 +43,29 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
               child: ElevatedButton(
                 onPressed: () {
                   ref.read(courseViewModelProvider.notifier).addCourse(
-                      CourseEntity(courseName: batchController.text));
+                      CourseEntity(courseName: courseController.text));
                 },
-                child: const Text('Add Batch'),
+                child: const Text('Add Course'),
               ),
             ),
-            //Display List of Batches
-            if (batchState.isLoading) ...{
+            //Display List of Courses
+            if (courseState.isLoading) ...{
               const Center(child: CircularProgressIndicator()),
-            } else if (batchState.error != null) ...{
-              Text(batchState.error.toString()),
-            } else if (batchState.lstCourse.isEmpty) ...{
+            } else if (courseState.error != null) ...{
+              Text(courseState.error.toString()),
+            } else if (courseState.lstCourse.isEmpty) ...{
               const Center(
-                child: Text('No Batches'),
+                child: Text('No Courses'),
               )
             } else ...{
               Expanded(
                 child: ListView.builder(
-                  itemCount: batchState.lstCourse.length,
+                  itemCount: courseState.lstCourse.length,
                   itemBuilder: (context, index) {
-                    var batch = batchState.lstCourse[index];
+                    var course = courseState.lstCourse[index];
                     return ListTile(
-                      title: Text(batch.courseName),
-                      subtitle: Text(batch.courseId ?? ''),
+                      title: Text(course.courseName),
+                      subtitle: Text(course.courseId ?? ''),
                       trailing: IconButton(
                           icon: const Icon(Icons.delete), onPressed: () {}),
                     );

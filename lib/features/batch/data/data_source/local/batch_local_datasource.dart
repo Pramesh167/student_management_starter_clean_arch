@@ -20,7 +20,7 @@ class BatchLocalDataSource {
       {required this.hiveService, required this.batchHiveModel});
 
 //add batch
-  Future<Either<Failure, bool>> addBatch(BatchEntity batch) async {
+  Future<Either<Failure, bool>> addBatch(CourseEntity batch) async {
     try {
       //convert entity to hive obj
       final hiveBatch = batchHiveModel.fromEntity(batch);
@@ -32,7 +32,7 @@ class BatchLocalDataSource {
   }
 
   //get all batches
-  Future<Either<Failure, List<BatchEntity>>> getAllBatches() async {
+  Future<Either<Failure, List<CourseEntity>>> getAllBatches() async {
     try {
       final hiveBatches = await hiveService.getAllBatches();
       final batches = batchHiveModel.toEntityList(hiveBatches);

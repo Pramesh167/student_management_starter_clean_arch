@@ -9,6 +9,6 @@ final batchRepositoryProvider = Provider<IBatchRepository>((ref) {
 });
 
 abstract class IBatchRepository {
-  Future<Either<Failure, bool>> addBatch(BatchEntity batch);
-  Future<Either<Failure, List<BatchEntity>>> getAllBatches();
+  Future<Either<Failure, bool>> addBatch(CourseEntity batch);
+  Future<Either<Failure, List<CourseEntity>>> getAllBatches();
 }

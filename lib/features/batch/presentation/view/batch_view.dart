@@ -67,7 +67,9 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
                       title: Text(batch.batchName),
                       subtitle: Text(batch.batchId ?? ''),
                       trailing: IconButton(
-                          icon: const Icon(Icons.delete), onPressed: () {}),
+                          icon: const Icon(Icons.delete), onPressed: () {
+                            ref.read(batchViewModelProvider.notifier).deleteBatch(batch);
+                          }),
                     );
                   },
                 ),

@@ -24,6 +24,12 @@ class HiveService {
     await box.put(batch.batchId, batch);
   }
 
+  //delete batch
+  Future<void> deleteBatch(BatchHiveModel batch) async {
+    var box = await Hive.openBox<BatchHiveModel>(HiveTableConstant.batchBox);
+    await box.delete(batch.batchId);
+  }
+
   Future<List<BatchHiveModel>> getAllBatches() async {
     var box = await Hive.openBox<BatchHiveModel>(HiveTableConstant.batchBox);
     var batches = box.values.toList();

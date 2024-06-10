@@ -48,6 +48,7 @@ class _AddCourseViewState extends ConsumerState<CourseView> {
                 child: const Text('Add Course'),
               ),
             ),
+
             //Display List of Courses
             if (courseState.isLoading) ...{
               const Center(child: CircularProgressIndicator()),

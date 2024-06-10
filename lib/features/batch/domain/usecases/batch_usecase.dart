@@ -20,5 +20,10 @@ class BatchUsecase {
   //for getting all batch
   Future<Either<Failure, List<BatchEntity>>> getAllBatches() {
     return batchRepository.getAllBatches();
+
+  }
+  //for deleting batch
+  Future<Either<Failure, bool>> deleteBatch(BatchEntity batch) {
+    return batchRepository.deleteBatch(batch);
   }
 }

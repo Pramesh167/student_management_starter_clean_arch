@@ -5,7 +5,7 @@ import 'package:student_management_starter/features/batch/domain/entity/batch_en
 import 'package:student_management_starter/features/batch/domain/usecases/batch_usecase.dart';
 import 'package:student_management_starter/features/batch/presentation/state/batch_state.dart';
 
-final courseViewModelProvider =
+final batchViewModelProvider =
     StateNotifierProvider<BatchViewModel, BatchState>((ref) {
   return BatchViewModel(ref.read(batchUseCaseProvider));
 });
@@ -17,7 +17,7 @@ class BatchViewModel extends StateNotifier<BatchState> {
 
   final BatchUsecase batchUseCase;
 
-  addCourse(CourseEntity batch) async {
+  addBatch(BatchEntity batch) async {
     //showin progresbar
     state = state.copyWith(isLoading: true);
     var data = await batchUseCase.addBatch(batch);

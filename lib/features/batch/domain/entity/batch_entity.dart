@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
-class CourseEntity extends Equatable {
-  final String? courseId;
-  final String courseName;
+class BatchEntity extends Equatable {
+  final String? batchId;
+  final String batchName;
 
-  const CourseEntity({
-    this.courseId,
-    required this.courseName,
+  const BatchEntity({
+    this.batchId,
+    required this.batchName,
   });
 
   @override
-  List<Object?> get props => [courseId, courseName];
+  List<Object?> get props => [batchId, batchName];
 }

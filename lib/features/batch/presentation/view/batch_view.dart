@@ -14,7 +14,7 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
   final batchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var batchState = ref.watch(courseViewModelProvider);
+    var batchState = ref.watch(batchViewModelProvider);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -42,8 +42,8 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  ref.read(courseViewModelProvider.notifier).addCourse(
-                      CourseEntity(courseName: batchController.text));
+                  ref.read(batchViewModelProvider.notifier).addBatch(
+                      BatchEntity(batchName: batchController.text));
                 },
                 child: const Text('Add Batch'),
               ),
@@ -53,19 +53,19 @@ class _AddBatchViewState extends ConsumerState<BatchView> {
               const Center(child: CircularProgressIndicator()),
             } else if (batchState.error != null) ...{
               Text(batchState.error.toString()),
-            } else if (batchState.lstCourse.isEmpty) ...{
+            } else if (batchState.lstBatch.isEmpty) ...{
               const Center(
                 child: Text('No Batches'),
               )
             } else ...{
               Expanded(
                 child: ListView.builder(
-                  itemCount: batchState.lstCourse.length,
+                  itemCount: batchState.lstBatch.length,
                   itemBuilder: (context, index) {
-                    var batch = batchState.lstCourse[index];
+                    var batch = batchState.lstBatch[index];
                     return ListTile(
-                      title: Text(batch.courseName),
-                      subtitle: Text(batch.courseId ?? ''),
+                      title: Text(batch.batchName),
+                      subtitle: Text(batch.batchId ?? ''),
                       trailing: IconButton(
                           icon: const Icon(Icons.delete), onPressed: () {}),
                     );

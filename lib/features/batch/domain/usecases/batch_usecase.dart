@@ -13,12 +13,12 @@ class BatchUsecase {
   BatchUsecase({required this.batchRepository});
 
   //for adding batch
-  Future<Either<Failure, bool>> addBatch(CourseEntity batch) {
+  Future<Either<Failure, bool>> addBatch(BatchEntity batch) {
     return batchRepository.addBatch(batch);
   }
 
   //for getting all batch
-  Future<Either<Failure, List<CourseEntity>>> getAllBatches() {
+  Future<Either<Failure, List<BatchEntity>>> getAllBatches() {
     return batchRepository.getAllBatches();
   }
 }

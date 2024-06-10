@@ -15,12 +15,12 @@ class BatchLocalRepository implements IBatchRepository {
   final BatchLocalDataSource batchLocalDataSource;
   BatchLocalRepository({required this.batchLocalDataSource});
   @override
-  Future<Either<Failure, bool>> addBatch(CourseEntity batch) {
+  Future<Either<Failure, bool>> addBatch(BatchEntity batch) {
     return batchLocalDataSource.addBatch(batch);
   }
 
   @override
-  Future<Either<Failure, List<CourseEntity>>> getAllBatches() {
+  Future<Either<Failure, List<BatchEntity>>> getAllBatches() {
     return batchLocalDataSource.getAllBatches();
   }
 }

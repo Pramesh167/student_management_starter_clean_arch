@@ -21,4 +21,8 @@ class CourseUsecase {
   Future<Either<Failure, List<CourseEntity>>> getAllCourses() {
     return courseRepository.getAllCourses();
   }
+  //for deleting course
+  Future<Either<Failure, bool>> deleteCourse(CourseEntity course) {
+    return courseRepository.deleteCourse(course);
+  }
 }

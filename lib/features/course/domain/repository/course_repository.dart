@@ -12,4 +12,5 @@ final courseRepositoryProvider = Provider<ICourseRepository>((ref) {
 abstract class ICourseRepository {
   Future<Either<Failure, bool>> addCourse(CourseEntity course);
   Future<Either<Failure, List<CourseEntity>>> getAllCourses();
+  Future<Either<Failure, bool>> deleteCourse(CourseEntity course);
 }

@@ -23,6 +23,11 @@ class HiveService {
     var box = await Hive.openBox<BatchHiveModel>(HiveTableConstant.batchBox);
     await box.put(batch.batchId, batch);
   }
+  //delete course
+  Future<void> deleteCourse(CourseHiveModel course) async {
+    var box = await Hive.openBox<CourseHiveModel>(HiveTableConstant.courseBox);
+    await box.delete(course.courseId);
+  }
 
   //delete batch
   Future<void> deleteBatch(BatchHiveModel batch) async {
